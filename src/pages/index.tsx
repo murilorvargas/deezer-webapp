@@ -1,8 +1,19 @@
 import Head from 'next/head'
 
+import SideBar from '../components/SideBar'
+
+import { Container } from '../styles/pages/Home'
+
 
 export default function Home() {
   return (
-    <h1>App</h1>
+    <>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <Container>
+        <SideBar />
+      </Container>
+    </>
   )
 }
