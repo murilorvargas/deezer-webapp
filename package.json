@@ -1,5 +1,5 @@
 {
-  "name": "deezer-webapp",
+  "name": "web-app_deezer",
   "private": true,
   "scripts": {
     "dev": "next dev",
