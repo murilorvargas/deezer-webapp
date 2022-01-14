@@ -11,7 +11,7 @@ export const Container = styled.header`
     padding: 0 2rem;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 2fr;
     align-items: center;
 
     > img {
