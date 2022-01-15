@@ -4,18 +4,10 @@ import Card from '../Card';
 
 import { Container } from './styles'
 
-interface Track {
-  id: number;
-  title: string;
-  duration: number;
-  preview: string;
-  artist: string;
-  album: string;
-  link: string;
-}
+import { ITrack } from '../../store/modules/favorites/types';
 
 interface CardsSectionProps {
-  tracks: Track[];
+  tracks: ITrack[];
 }
 
 const CardsSection: React.FC<CardsSectionProps> = ({ tracks }) => {
