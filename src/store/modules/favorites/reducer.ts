@@ -1,5 +1,6 @@
 import { Reducer } from 'redux'
 import produce from 'immer'
+import { toast } from 'react-toastify'
 
 import { IPlaylistState } from './types'
 
@@ -10,7 +11,7 @@ const INITIAL_STATE: IPlaylistState = {
 const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
   return produce(state, draft =>{
     switch(action.type) {
-      case 'ADD_TRACK_TO_FAVORITES': {
+      case 'ADD_TRACK_TO_FAVORITES_SUCCESS': {
         const { track } = action.payload;
           draft.tracks.push(
             {
@@ -19,6 +20,10 @@ const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
             }
           )
           break
+      }
+      case 'ADD_TRACK_TO_FAVORITES_FAILURE': {
+        toast.error("Error!")
+        break
       }
       case 'REMOVE_TRACK_FROM_FAVORITES': {
         const { track } = action.payload;

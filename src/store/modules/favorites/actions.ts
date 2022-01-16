@@ -1,11 +1,26 @@
 import { ITrack } from "./types";
 
-export function addTrackToFavorites(track: ITrack) {
+export function addTrackToFavoritesRequest(track: ITrack) {
   return {
-    type: 'ADD_TRACK_TO_FAVORITES',
+    type: 'ADD_TRACK_TO_FAVORITES_REQUEST',
     payload: {
       track
     }
+  }
+}
+
+export function addTrackToFavoritesSuccess(track: ITrack) {
+  return {
+    type: 'ADD_TRACK_TO_FAVORITES_SUCCESS',
+    payload: {
+      track
+    }
+  }
+}
+
+export function addTrackToFavoritesFailure() {
+  return {
+    type: 'ADD_TRACK_TO_FAVORITES_FAILURE',
   }
 }
 
