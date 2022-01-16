@@ -1,6 +1,9 @@
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { Provider } from 'react-redux'
+import { ToastContainer, Flip } from 'react-toastify';
+
+import "react-toastify/dist/ReactToastify.css";
 
 import store from '../store'
 import Header from '../components/Header'
@@ -15,6 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Header/>
         <Component {...pageProps} />
         <GlobalStyle />
+        <ToastContainer 
+          toastClassName="colored-toast"
+          autoClose={5000}
+        />
       </ThemeProvider>
     </Provider>
   )
