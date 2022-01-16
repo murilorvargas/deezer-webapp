@@ -1,24 +1,29 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { TiArrowForward } from 'react-icons/ti'
 
+import { addTrackToFavoritesRequest, removeTrackFromFavorites } from '../../store/modules/favorites/actions'
+
 import { Container } from './styles'
 
-interface Track {
-  id: number;
-  title: string;
-  duration: number;
-  preview: string;
-  artist: string;
-  album: string;
-  link: string;
-}
+import { ITrack } from '../../store/modules/favorites/types'
 
 interface CardProps {
-  track: Track;
+  track: ITrack;
 }
 
 const Card: React.FC<CardProps> = ({ track }) => {
+  const dispatch = useDispatch()
+
+  const handleRemoveTrackFromFavorites = useCallback(() => {
+    dispatch(removeTrackFromFavorites(track))
+  }, [dispatch, track])
+
+  const handleAddTrackToFavorites = useCallback(() => {
+    dispatch(addTrackToFavoritesRequest(track))
+  }, [dispatch, track])
+
   return (
     <Container>
       <div>
@@ -31,7 +36,7 @@ const Card: React.FC<CardProps> = ({ track }) => {
       <div>
         <span>{new Date(track.duration * 1000).toISOString().substr(14, 5)}</span>
         <div>
-          <button type="button"><AiOutlineStar /></button>
+          <button type="button" onClick={track.favorite ? handleRemoveTrackFromFavorites : handleAddTrackToFavorites}>{ track.favorite ? <AiFillStar /> : <AiOutlineStar /> }</button>
           <a rel="noopener noreferrer" href={track.link} target="_blank"><TiArrowForward /></a>
         </div>
       </div>
