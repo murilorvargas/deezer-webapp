@@ -5,7 +5,14 @@ export const Container = styled.main`
     margin: 0 auto;
     padding: 0 2rem;
 
+    display: flex;
+
     > aside:nth-child(1) {
         margin-top: 60px;
+    }
+
+    > div:nth-child(2) {
+        margin-top: 60px;
+        margin-left: 112px;
     }
 `;
