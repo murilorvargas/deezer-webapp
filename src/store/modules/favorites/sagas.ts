@@ -2,6 +2,7 @@ import { all, takeLatest,call, put } from 'redux-saga/effects'
 
 import { setFavoritesTracksSuccess, addTrackToFavoritesFailure, addTrackToFavoritesRequest, addTrackToFavoritesSuccess, removeTrackFromFavoritesRequest, removeTrackFromFavoritesSuccess, removeTrackFromFavoritesFailure } from './actions'
 import api from '../../../services/api'
+import { ActionTypes } from './types'
 
 type AddTrackToDatabaseRequest = ReturnType<typeof addTrackToFavoritesRequest>
 type RemoveTrackFromDatabaseRequest = ReturnType<typeof removeTrackFromFavoritesRequest>
@@ -40,7 +41,7 @@ function* removeTrackFromDatabase({ payload }: RemoveTrackFromDatabaseRequest) {
 }
 
 export default all([
-  takeLatest('REMOVE_TRACK_FROM_FAVORITES_REQUEST', removeTrackFromDatabase),
-  takeLatest('SET_FAVORITES_TRACKS_REQUEST', setFavoritesTracksFromDatabase),
-  takeLatest('ADD_TRACK_TO_FAVORITES_REQUEST', addTrackToDatabase)
+  takeLatest(ActionTypes.removeTrackFromFavoritesRequest, removeTrackFromDatabase),
+  takeLatest(ActionTypes.setFavoritesTracksRequest, setFavoritesTracksFromDatabase),
+  takeLatest(ActionTypes.addTrackToFavoritesRequest, addTrackToDatabase)
 ])
