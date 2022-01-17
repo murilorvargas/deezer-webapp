@@ -33,10 +33,14 @@ const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
         toast.error("Error!")
         break
       }
-      case 'REMOVE_TRACK_FROM_FAVORITES': {
+      case 'REMOVE_TRACK_FROM_FAVORITES_SUCCESS': {
         const { track } = action.payload;
         const trackIndex = draft.tracks.findIndex(t => t.id === track.id)
         draft.tracks.splice(trackIndex, 1)
+        break
+      }
+      case 'REMOVE_TRACK_FROM_FAVORITES_FAILURE': {
+        toast.error("Error!")
         break
       }
       default: {
