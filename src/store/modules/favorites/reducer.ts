@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import produce from 'immer'
 import { toast } from 'react-toastify'
 
-import { IPlaylistState } from './types'
+import { ActionTypes, IPlaylistState } from './types'
 
 const INITIAL_STATE: IPlaylistState = {
   tracks: []
@@ -11,7 +11,7 @@ const INITIAL_STATE: IPlaylistState = {
 const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
   return produce(state, draft =>{
     switch(action.type) {
-      case 'SET_FAVORITES_TRACKS_SUCCESS': {
+      case ActionTypes.setFavoritesTracksSuccess: {
         while(draft.tracks.length) {
           draft.tracks.pop();
         }
@@ -19,7 +19,7 @@ const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
         draft.tracks.push(...data)
         break
       }
-      case 'ADD_TRACK_TO_FAVORITES_SUCCESS': {
+      case ActionTypes.addTrackToFavoritesSuccess: {
         const { track } = action.payload;
           draft.tracks.push(
             {
@@ -29,17 +29,17 @@ const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
           )
           break
       }
-      case 'ADD_TRACK_TO_FAVORITES_FAILURE': {
+      case ActionTypes.addTrackToFavoritesFailure: {
         toast.error("Error!")
         break
       }
-      case 'REMOVE_TRACK_FROM_FAVORITES_SUCCESS': {
+      case ActionTypes.removeTrackFromFavoritesSuccess: {
         const { track } = action.payload;
         const trackIndex = draft.tracks.findIndex(t => t.id === track.id)
         draft.tracks.splice(trackIndex, 1)
         break
       }
-      case 'REMOVE_TRACK_FROM_FAVORITES_FAILURE': {
+      case ActionTypes.removeTrackFromFavoritesFailure: {
         toast.error("Error!")
         break
       }
