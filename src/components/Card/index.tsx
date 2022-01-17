@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { TiArrowForward } from 'react-icons/ti'
 
-import { addTrackToFavoritesRequest, removeTrackFromFavorites } from '../../store/modules/favorites/actions'
+import { addTrackToFavoritesRequest, removeTrackFromFavoritesRequest } from '../../store/modules/favorites/actions'
 
 import { Container } from './styles'
 
@@ -17,7 +17,7 @@ const Card: React.FC<CardProps> = ({ track }) => {
   const dispatch = useDispatch()
 
   const handleRemoveTrackFromFavorites = useCallback(() => {
-    dispatch(removeTrackFromFavorites(track))
+    dispatch(removeTrackFromFavoritesRequest(track))
   }, [dispatch, track])
 
   const handleAddTrackToFavorites = useCallback(() => {
