@@ -76,4 +76,19 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(400).json(err);
     });
   }
+
+  if(req.method === 'DELETE') {
+    const { trackId } = req.body;
+    const { ['web-app_deezer.uuid']: userUuid } = parseCookies({ req })
+
+    remove(ref(database, `users/${userUuid}/tracks/${trackId}`))
+    .then(() => {
+      return res.status(201).json({ success: true });
+    })
+    .catch(err =>
+      res
+        .status(501)
+        .json({ error: `Sorry something Happened! ${err.message}` })
+    );
+  }
 }
