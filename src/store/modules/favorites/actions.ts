@@ -39,11 +39,26 @@ export function addTrackToFavoritesFailure() {
   }
 }
 
-export function removeTrackFromFavorites(track: ITrack) {
+export function removeTrackFromFavoritesRequest(track: ITrack) {
   return {
-    type: 'REMOVE_TRACK_FROM_FAVORITES',
+    type: 'REMOVE_TRACK_FROM_FAVORITES_REQUEST',
     payload: {
       track
     }
+  }
+}
+
+export function removeTrackFromFavoritesSuccess(track: ITrack) {
+  return {
+    type: 'REMOVE_TRACK_FROM_FAVORITES_SUCCESS',
+    payload: {
+      track
+    }
+  }
+}
+
+export function removeTrackFromFavoritesFailure() {
+  return {
+    type: 'REMOVE_TRACK_FROM_FAVORITES_FAILURE',
   }
 }
