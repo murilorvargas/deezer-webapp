@@ -1,14 +1,14 @@
-import { ITrack } from "./types";
+import { ActionTypes, ITrack } from "./types";
 
 export function setFavoritesTracksRequest() {
   return {
-    type: 'SET_FAVORITES_TRACKS_REQUEST',
+    type: ActionTypes.setFavoritesTracksRequest,
   }
 }
 
 export function setFavoritesTracksSuccess(data: ITrack[]) {
   return {
-    type: 'SET_FAVORITES_TRACKS_SUCCESS',
+    type: ActionTypes.setFavoritesTracksSuccess,
     payload: {
       data
     }
@@ -17,7 +17,7 @@ export function setFavoritesTracksSuccess(data: ITrack[]) {
 
 export function addTrackToFavoritesRequest(track: ITrack) {
   return {
-    type: 'ADD_TRACK_TO_FAVORITES_REQUEST',
+    type: ActionTypes.addTrackToFavoritesRequest,
     payload: {
       track
     }
@@ -26,7 +26,7 @@ export function addTrackToFavoritesRequest(track: ITrack) {
 
 export function addTrackToFavoritesSuccess(track: ITrack) {
   return {
-    type: 'ADD_TRACK_TO_FAVORITES_SUCCESS',
+    type: ActionTypes.addTrackToFavoritesSuccess,
     payload: {
       track
     }
@@ -35,13 +35,13 @@ export function addTrackToFavoritesSuccess(track: ITrack) {
 
 export function addTrackToFavoritesFailure() {
   return {
-    type: 'ADD_TRACK_TO_FAVORITES_FAILURE',
+    type: ActionTypes.addTrackToFavoritesFailure,
   }
 }
 
 export function removeTrackFromFavoritesRequest(track: ITrack) {
   return {
-    type: 'REMOVE_TRACK_FROM_FAVORITES_REQUEST',
+    type: ActionTypes.removeTrackFromFavoritesRequest,
     payload: {
       track
     }
@@ -50,7 +50,7 @@ export function removeTrackFromFavoritesRequest(track: ITrack) {
 
 export function removeTrackFromFavoritesSuccess(track: ITrack) {
   return {
-    type: 'REMOVE_TRACK_FROM_FAVORITES_SUCCESS',
+    type: ActionTypes.removeTrackFromFavoritesSuccess,
     payload: {
       track
     }
@@ -59,6 +59,6 @@ export function removeTrackFromFavoritesSuccess(track: ITrack) {
 
 export function removeTrackFromFavoritesFailure() {
   return {
-    type: 'REMOVE_TRACK_FROM_FAVORITES_FAILURE',
+    type: ActionTypes.removeTrackFromFavoritesFailure,
   }
 }
