@@ -11,6 +11,14 @@ const INITIAL_STATE: IPlaylistState = {
 const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
   return produce(state, draft =>{
     switch(action.type) {
+      case 'SET_FAVORITES_TRACKS_SUCCESS': {
+        while(draft.tracks.length) {
+          draft.tracks.pop();
+        }
+        const { data } = action.payload
+        draft.tracks.push(...data)
+        break
+      }
       case 'ADD_TRACK_TO_FAVORITES_SUCCESS': {
         const { track } = action.payload;
           draft.tracks.push(
