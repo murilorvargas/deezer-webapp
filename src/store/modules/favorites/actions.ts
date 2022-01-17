@@ -1,5 +1,20 @@
 import { ITrack } from "./types";
 
+export function setFavoritesTracksRequest() {
+  return {
+    type: 'SET_FAVORITES_TRACKS_REQUEST',
+  }
+}
+
+export function setFavoritesTracksSuccess(data: ITrack[]) {
+  return {
+    type: 'SET_FAVORITES_TRACKS_SUCCESS',
+    payload: {
+      data
+    }
+  }
+}
+
 export function addTrackToFavoritesRequest(track: ITrack) {
   return {
     type: 'ADD_TRACK_TO_FAVORITES_REQUEST',
