@@ -3,18 +3,19 @@ import produce from 'immer'
 import { toast } from 'react-toastify'
 
 import { ActionTypes, IPlaylistState } from './types'
+import { HYDRATE } from 'next-redux-wrapper'
 
 const INITIAL_STATE: IPlaylistState = {
   tracks: []
 }
 
 const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
-  return produce(state, draft =>{
+  return produce(state, draft => {
     switch(action.type) {
+      case HYDRATE: {
+        return {  ...draft, ...action.payload.favorites}
+      }
       case ActionTypes.setFavoritesTracksSuccess: {
-        while(draft.tracks.length) {
-          draft.tracks.pop();
-        }
         const { data } = action.payload
         draft.tracks.push(...data)
         break
