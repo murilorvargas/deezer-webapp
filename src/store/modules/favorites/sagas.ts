@@ -1,14 +1,25 @@
 import { all, takeLatest,call, put } from 'redux-saga/effects'
 
-import { setFavoritesTracksSuccess, addTrackToFavoritesFailure, addTrackToFavoritesRequest, addTrackToFavoritesSuccess, removeTrackFromFavoritesRequest, removeTrackFromFavoritesSuccess, removeTrackFromFavoritesFailure } from './actions'
+import { 
+  setFavoritesTracksSuccess,
+  addTrackToFavoritesFailure,
+  addTrackToFavoritesRequest,
+  addTrackToFavoritesSuccess,
+  removeTrackFromFavoritesRequest,
+  removeTrackFromFavoritesSuccess,
+  removeTrackFromFavoritesFailure, 
+  setFavoritesTracksRequest} from './actions'
 import api from '../../../services/api'
+import { getDataFromDatabase } from '../../../utils/getDataFromDatabase';
+
 import { ActionTypes } from './types'
 
+type SetFavoritesTracksRequest = ReturnType<typeof setFavoritesTracksRequest>
 type AddTrackToDatabaseRequest = ReturnType<typeof addTrackToFavoritesRequest>
 type RemoveTrackFromDatabaseRequest = ReturnType<typeof removeTrackFromFavoritesRequest>
 
-function* setFavoritesTracksFromDatabase(action) {
-  const { data } = yield call(api.get, '/api/favorites')
+function* setFavoritesTracksFromDatabase({ payload }: SetFavoritesTracksRequest) {
+  const data = yield getDataFromDatabase(payload.ctx)
   yield put(setFavoritesTracksSuccess(data))
 }
 
