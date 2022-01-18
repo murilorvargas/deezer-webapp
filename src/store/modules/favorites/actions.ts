@@ -1,8 +1,11 @@
 import { ActionTypes, ITrack } from "./types";
 
-export function setFavoritesTracksRequest() {
+export function setFavoritesTracksRequest(ctx) {
   return {
     type: ActionTypes.setFavoritesTracksRequest,
+    payload: {
+      ctx
+    }
   }
 }
 
