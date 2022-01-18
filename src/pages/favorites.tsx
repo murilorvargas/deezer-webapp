@@ -1,13 +1,17 @@
 import Head from 'next/head'
 import { useSelector } from 'react-redux'
+import { END } from 'redux-saga'
+
+import { setFavoritesTracksRequest } from '../store/modules/favorites/actions'
+import { IState, wrapper } from '../store'
 
 import CardsSection from '../components/CardsSection'
 import SideBar from '../components/SideBar'
 
-import { IState } from '../store'
 import { ITrack } from '../store/modules/favorites/types'
 
 import { Container } from '../styles/pages/Favorites'
+import { GetServerSidePropsContext } from 'next'
 
 
 export default function Favorites() {
@@ -25,3 +29,13 @@ export default function Favorites() {
     </>
   )
 }
+
+export const getServerSideProps = wrapper.getServerSideProps( store => async (ctx: GetServerSidePropsContext) => {
+  store.dispatch(setFavoritesTracksRequest(ctx));
+  store.dispatch(END);
+  await store.sagaTask.toPromise();
+
+  return {
+    props: {}
+  }
+});
