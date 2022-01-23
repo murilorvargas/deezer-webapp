@@ -8,7 +8,7 @@ import { IState, wrapper } from '../store'
 import CardsSection from '../components/CardsSection'
 import SideBar from '../components/SideBar'
 
-import { ITrack } from '../store/modules/favorites/types'
+import { ITrack } from '../store/modules/types'
 
 import { Container } from '../styles/pages/Favorites'
 import { GetServerSidePropsContext } from 'next'
