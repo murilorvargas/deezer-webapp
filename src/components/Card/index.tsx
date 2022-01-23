@@ -7,7 +7,7 @@ import { addTrackToFavoritesRequest, removeTrackFromFavoritesRequest } from '../
 
 import { Container } from './styles'
 
-import { ITrack } from '../../store/modules/favorites/types'
+import { ITrack } from '../../store/modules/types'
 
 interface CardProps {
   track: ITrack;
