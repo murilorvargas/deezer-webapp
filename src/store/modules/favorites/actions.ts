@@ -1,4 +1,4 @@
-import { ActionTypes, ITrack } from "./types";
+import { ActionTypes, ITrack } from "../types";
 
 export function setFavoritesTracksRequest(ctx) {
   return {
