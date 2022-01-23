@@ -17,7 +17,6 @@ const dbRef = ref(database)
 
 const getDataFromDatabase = async (ctx) => {
   const { ['web-app_deezer.uuid']: userUuid } = parseCookies(ctx)
-  console.log(userUuid)
 
   const data = await get(child(dbRef, `users/${userUuid}/tracks`))
     .then(snapshot => {
