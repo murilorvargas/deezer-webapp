@@ -32,25 +32,29 @@ export default function Home() {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps( store => async (ctx: GetServerSidePropsContext) => {
-  const data = await getDataFromDatabase(ctx)
-  const res = await api.get('https://api.deezer.com/playlist/3155776842/&limit=50').then(response => response.data)
-
-  const tracks = res.tracks.data.map(track => {
-    return {
-      id: Number(track.id),
-      title: track.title_short,
-      duration: track.duration,
-      preview: track.preview,
-      artist: track.artist.name,
-      album: track.album.cover,
-      link: track.link,
-      favorite: data.some(t => t.id === track.id),
-    }
-  })
-
-  store.dispatch(setTracks(tracks))
-  store.dispatch(END);
-  await store.sagaTask.toPromise();
+  try {
+    const data = await getDataFromDatabase(ctx)
+    const res = await api.get('https://api.deezer.com/playlist/3155776842/&limit=50').then(response => response.data)
+  
+    const tracks = res.tracks.data.map(track => {
+      return {
+        id: Number(track.id),
+        title: track.title_short,
+        duration: track.duration,
+        preview: track.preview,
+        artist: track.artist.name,
+        album: track.album.cover,
+        link: track.link,
+        favorite: data.some(t => t.id === track.id),
+      }
+    })
+  
+    store.dispatch(setTracks(tracks))
+    store.dispatch(END);
+    await store.sagaTask.toPromise();
+  } catch (error) {
+    console.log(error)
+  }
 
   return {
     props: {}
