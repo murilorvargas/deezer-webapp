@@ -12,7 +12,8 @@ import {
 import api from '../../../services/api'
 import { getDataFromDatabase } from '../../../utils/getDataFromDatabase';
 
-import { ActionTypes } from './types'
+import { ActionTypes } from '../types'
+import { handleDeezerFavoritesTracks } from '../deezerTracks/actions';
 
 type SetFavoritesTracksRequest = ReturnType<typeof setFavoritesTracksRequest>
 type AddTrackToDatabaseRequest = ReturnType<typeof addTrackToFavoritesRequest>
@@ -29,6 +30,7 @@ function* addTrackToDatabase({ payload }: AddTrackToDatabaseRequest) {
   const status = response.status
 
   if (status === 201) {
+    yield put(handleDeezerFavoritesTracks(track.id))
     yield put(addTrackToFavoritesSuccess(track))
   }
 
@@ -43,6 +45,7 @@ function* removeTrackFromDatabase({ payload }: RemoveTrackFromDatabaseRequest) {
   const status = response.status
 
   if (status === 201) {
+    yield put(handleDeezerFavoritesTracks(track.id))
     yield put(removeTrackFromFavoritesSuccess(track))
   }
 
