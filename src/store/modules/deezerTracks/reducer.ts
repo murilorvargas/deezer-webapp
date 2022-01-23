@@ -21,8 +21,8 @@ const deezerTracks: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) =>
       case ActionTypes.handleDeezerFavoritesTracks: {
         const { id } = action.payload
         const track = draft.tracks.find(track => track.id === id)
-        track.favorite = !track.favorite
-        console.log(track)
+        if (track)
+          track.favorite = !track.favorite
         break
       }
       default: {
