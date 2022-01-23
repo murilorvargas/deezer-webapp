@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import produce from 'immer'
 import { toast } from 'react-toastify'
 
-import { ActionTypes, IPlaylistState } from './types'
+import { ActionTypes, IPlaylistState } from '../types'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const INITIAL_STATE: IPlaylistState = {
