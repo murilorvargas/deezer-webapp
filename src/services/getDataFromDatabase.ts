@@ -1,4 +1,4 @@
-import { database } from '../services/firebase';
+import { database } from './firebase';
 import { ref, child, get } from 'firebase/database';
 import { parseCookies } from 'nookies';
 
