@@ -18,6 +18,12 @@ export function setFavoritesTracksSuccess(data: ITrack[]) {
   }
 }
 
+export function setFavoritesTracksFailure() {
+  return {
+    type: ActionTypes.setFavoritesTracksFailure,
+  }
+}
+
 export function addTrackToFavoritesRequest(track: ITrack) {
   return {
     type: ActionTypes.addTrackToFavoritesRequest,

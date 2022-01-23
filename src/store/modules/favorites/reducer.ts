@@ -20,6 +20,10 @@ const favorites: Reducer<IPlaylistState> = (state = INITIAL_STATE, action) => {
         draft.tracks.push(...data)
         break
       }
+      case ActionTypes.setFavoritesTracksFailure: {
+        toast.error("Error!")
+        break
+      }
       case ActionTypes.addTrackToFavoritesSuccess: {
         const { track } = action.payload;
           draft.tracks.push(
