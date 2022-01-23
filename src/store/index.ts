@@ -5,10 +5,11 @@ import { createWrapper } from 'next-redux-wrapper'
 import rootReducer from './modules/rootReducer'
 import rootSaga from './modules/rootSaga'
 
-import { IPlaylistState } from './modules/favorites/types'
+import { IPlaylistState } from './modules/types'
 
 export interface IState {
-  favorites: IPlaylistState
+  favorites: IPlaylistState,
+  deezerTracks: IPlaylistState,
 }
 
 export const makeStore = () => {
