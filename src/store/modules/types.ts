@@ -1,4 +1,6 @@
 export enum ActionTypes {
+  setTracks = 'SET_TRACKS',
+  handleDeezerFavoritesTracks = 'HANDLE_DEEZER_TRACKS_FAVORITES',
   setFavoritesTracksRequest = 'SET_FAVORITES_TRACKS_REQUEST',
   setFavoritesTracksSuccess = 'SET_FAVORITES_TRACKS_SUCCESS',
   addTrackToFavoritesRequest = 'ADD_TRACK_TO_FAVORITES_REQUEST',
