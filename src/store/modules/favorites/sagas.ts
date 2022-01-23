@@ -11,7 +11,7 @@ import {
   setFavoritesTracksRequest,
   setFavoritesTracksFailure} from './actions'
 import api from '../../../services/api'
-import { getDataFromDatabase } from '../../../utils/getDataFromDatabase';
+import { getDataFromDatabase } from '../../../services/getDataFromDatabase';
 
 import { ActionTypes } from '../types'
 import { handleDeezerFavoritesTracks } from '../deezerTracks/actions';
