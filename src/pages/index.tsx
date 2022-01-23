@@ -4,7 +4,7 @@ import { END } from 'redux-saga';
 import { useSelector } from 'react-redux';
 
 import api from '../services/api'
-import { getDataFromDatabase } from '../utils/getDataFromDatabase';
+import { getDataFromDatabase } from '../services/getDataFromDatabase';
 import { IState, wrapper } from '../store';
 import { setTracks } from '../store/modules/deezerTracks/actions';
 
