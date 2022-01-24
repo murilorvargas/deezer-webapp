@@ -55,7 +55,11 @@ export const Container = styled.div`
       > button {
         height: 32px;
         width: 32px;
-        margin-left: 24px;
+        margin-right: 8px;
+        
+        &:nth-child(1) {
+          margin-left: 24px;
+        }
 
         border: 0 none;
         border-radius: 100%;
@@ -80,7 +84,6 @@ export const Container = styled.div`
       > a {
         height: 32px;
         width: 32px;
-        margin-left: 8px;
 
         border-radius: 100%;
 
