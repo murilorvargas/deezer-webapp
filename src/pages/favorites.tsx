@@ -20,7 +20,7 @@ export default function Favorites() {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Favorites</title>
       </Head>
       <Container>
         <SideBar />
