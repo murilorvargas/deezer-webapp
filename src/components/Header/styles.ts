@@ -17,7 +17,7 @@ export const Container = styled.header`
     > img {
       width: 144px;
     }
-    > form {
+    > div {
       height: 46px;
       width: 480px;
       padding: 16px 32px;
