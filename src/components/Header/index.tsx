@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import { FiSearch, FiMenu } from 'react-icons/fi'
 
 import { useSidebar } from '../../context/SidebarContext';
-import useWidth from '../../hooks/useWidth';
+import { useWidth } from '../../hooks/useWidth';
 
 import { Container } from './styles';
 
 const Header = () => {
   let windowWidth = useWidth()
-  const { sidebar, setSidebar } = useSidebar();
+  
+  const { setSidebar } = useSidebar();
   const [search, setSearch] = useState<string>()
   const router = useRouter()
 

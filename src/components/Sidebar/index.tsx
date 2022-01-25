@@ -4,12 +4,13 @@ import { FiHeadphones,FiHeart } from 'react-icons/fi';
 import { FiX } from 'react-icons/fi'
 
 import { useSidebar } from '../../context/SidebarContext';
-import useWidth from '../../hooks/useWidth';
+import { useWidth } from '../../hooks/useWidth';
 
 import { Container, ContainerMobile } from './styles';
 
 const Sidebar: React.FC = () => {
   const { sidebar, setSidebar } = useSidebar();
+  
   let windowWidth = useWidth()
 
   const handleCloseSidebar = () => {

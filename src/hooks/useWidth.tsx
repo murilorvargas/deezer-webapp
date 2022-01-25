@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 export const useWidth = (): number => {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState<number>();
 
   const handleResize = useCallback(() => {
     setWidth(window.innerWidth);
