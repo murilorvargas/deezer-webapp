@@ -8,7 +8,7 @@ import { getDataFromDatabase } from '../services/getDataFromDatabase';
 import { IState, wrapper } from '../store';
 import { setTracks } from '../store/modules/deezerTracks/actions';
 
-import SideBar from '../components/SideBar'
+import Sidebar from '../components/Sidebar'
 import CardsSection from '../components/CardsSection'
 
 import { ITrack } from '../store/modules/types'
@@ -24,7 +24,7 @@ export default function Home() {
         <title>Home</title>
       </Head>
       <Container>
-        <SideBar />
+        <Sidebar />
         <CardsSection tracks={tracks}/>
       </Container>
     </>

@@ -6,7 +6,7 @@ import { setFavoritesTracksRequest } from '../../store/modules/favorites/actions
 import { IState, wrapper } from '../../store'
 
 import CardsSection from '../../components/CardsSection'
-import SideBar from '../../components/SideBar'
+import Sidebar from '../../components/Sidebar'
 
 import { ITrack } from '../../store/modules/types'
 
@@ -26,7 +26,7 @@ export default function Search() {
         <title>Search</title>
       </Head>
       <Container>
-        <SideBar />
+        <Sidebar />
         <CardsSection tracks={tracks}/>
       </Container>
     </>
