@@ -1,12 +1,21 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import { FiSearch } from 'react-icons/fi'
+import { FiSearch, FiMenu } from 'react-icons/fi'
+
+import { useSidebar } from '../../context/SidebarContext';
+import useWidth from '../../hooks/useWidth';
 
 import { Container } from './styles';
 
 const Header = () => {
+  let windowWidth = useWidth()
+  const { sidebar, setSidebar } = useSidebar();
   const [search, setSearch] = useState<string>()
   const router = useRouter()
+
+  const handleOpenSidebar = () => {
+    setSidebar(true)
+  }
   
   const handleSearch = async () => {
     router.push(`/search/${search.normalize("NFD").trim().replace(/\s+/g, ' ').replace(/[^a-zA-Zs]/g, "+")}`)
@@ -19,8 +28,13 @@ const Header = () => {
   return (
     <Container>
       <div>
-        <img src="/images/logo.png" alt="deezer" />
-
+        { windowWidth < 768 ? (
+          <button onClick={handleOpenSidebar}>
+            <FiMenu />
+          </button>
+        ) : (
+          <img src="/images/logo.png" alt="deezer" />
+        )}
         <div>
           <input type="text" placeholder="Músicas" onKeyPress={handleKeyPress} onChange={handleOnChange} value={search} />
           <button type="button" onClick={handleSearch}><FiSearch /></button>    

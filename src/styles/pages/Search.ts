@@ -7,12 +7,8 @@ export const Container = styled.main`
 
     display: flex;
 
-    > aside:nth-child(1) {
-        margin-top: 60px;
-    }
-
     > div:nth-child(2) {
         margin-top: 60px;
-        margin-left: 112px;
+        margin-bottom: 60px;
     }
 `;

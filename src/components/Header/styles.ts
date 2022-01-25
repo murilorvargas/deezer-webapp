@@ -10,16 +10,30 @@ export const Container = styled.header`
     margin: 0 auto;
     padding: 0 2rem;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
+    display: flex;
     align-items: center;
+
+    > button {
+      margin-right: auto;
+      border: 0 none;
+
+      background: ${props => props.theme.colors.gray900};
+      color: ${props => props.theme.colors.gray50};
+
+      > svg {
+        vertical-align: middle;
+        font-size: 24px;
+      }
+    }
 
     > img {
       width: 144px;
     }
     > div {
       height: 46px;
-      width: 480px;
+      width: 100%;
+      max-width: 526px;
+      margin-left: 58px;
       padding: 16px 32px;
       border-radius: 32px;
       
@@ -31,6 +45,7 @@ export const Container = styled.header`
       color: ${props => props.theme.colors.gray200};
 
       > input {
+        width: 100%;
         text-decoration: none;
         border: 0 none;
 

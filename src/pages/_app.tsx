@@ -5,6 +5,7 @@ import { ToastContainer, Flip } from 'react-toastify';
 import { wrapper } from '../store'
 
 import "react-toastify/dist/ReactToastify.css";
+import { SidebarProvider } from '../context/SidebarContext';
 
 import Header from '../components/Header'
 
@@ -14,13 +15,15 @@ import theme from '../styles/theme'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Header/>
-      <Component {...pageProps} />
-      <GlobalStyle />
-      <ToastContainer 
-        toastClassName="colored-toast"
-        autoClose={5000}
-      />
+      <SidebarProvider>
+        <Header/>
+        <Component {...pageProps} />
+        <GlobalStyle />
+        <ToastContainer 
+          toastClassName="colored-toast"
+          autoClose={5000}
+        />
+      </SidebarProvider>
     </ThemeProvider>
   )
 }

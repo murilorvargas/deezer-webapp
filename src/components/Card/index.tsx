@@ -4,6 +4,7 @@ import { RiPlayFill, RiPauseFill } from 'react-icons/ri'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { TiArrowForward } from 'react-icons/ti'
 
+import { useWidth } from '../../hooks/useWidth'
 import { addTrackToFavoritesRequest, removeTrackFromFavoritesRequest } from '../../store/modules/favorites/actions'
 
 import { Container } from './styles'
@@ -15,6 +16,8 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ track }) => {
+  let windowWidth = useWidth()
+
   const [audio, setAudio] = useState<HTMLAudioElement>()
   const [audioState, setAudioState] = useState(false)
   useEffect(() => {
@@ -58,12 +61,21 @@ const Card: React.FC<CardProps> = ({ track }) => {
         </div>
       </div>
       <div>
-        <span>{new Date(track.duration * 1000).toISOString().substr(14, 5)}</span>
-        <div>
-          <button type="button"onClick={handlePlayTrack}>{!audioState ? <RiPlayFill /> : <RiPauseFill/>}</button>
-          <button type="button" onClick={track.favorite ? handleRemoveTrackFromFavorites : handleAddTrackToFavorites}>{ track.favorite ? <AiFillStar /> : <AiOutlineStar /> }</button>
-          <a rel="noopener noreferrer" href={track.link} target="_blank"><TiArrowForward /></a>
-        </div>
+        {windowWidth < 768 ? (
+          <div>
+            <button type="button" onClick={track.favorite ? handleRemoveTrackFromFavorites : handleAddTrackToFavorites}>{ track.favorite ? <AiFillStar /> : <AiOutlineStar /> }</button>
+            <a rel="noopener noreferrer" href={track.link} target="_blank"><TiArrowForward /></a>
+          </div>
+        ) : (
+        <>
+          <span>{new Date(track.duration * 1000).toISOString().substr(14, 5)}</span>
+          <div>
+            <button type="button"onClick={handlePlayTrack}>{!audioState ? <RiPlayFill /> : <RiPauseFill/>}</button>
+            <button type="button" onClick={track.favorite ? handleRemoveTrackFromFavorites : handleAddTrackToFavorites}>{ track.favorite ? <AiFillStar /> : <AiOutlineStar /> }</button>
+            <a rel="noopener noreferrer" href={track.link} target="_blank"><TiArrowForward /></a>
+          </div>
+        </>
+      )}
       </div>
     </Container>
   );

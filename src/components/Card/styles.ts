@@ -27,9 +27,23 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
 
+      strong {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+
+        overflow: hidden;
+      }
+
       span {
         font-size: 12px;
-        color: ${props => props.theme.colors.gray200}
+        color: ${props => props.theme.colors.gray200};
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+
+        overflow: hidden;
       }
     }
   }
@@ -47,8 +61,6 @@ export const Container = styled.div`
     }
 
     > div {
-      border-left: 1px solid ${props => props.theme.colors.gray600};
-
       display: flex;
       align-items: center;
       
