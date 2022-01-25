@@ -12,6 +12,7 @@ const theme = {
     gray700: '#353646',
     gray800: '#1F2029',
     gray900: '#181B23',
+    gray950: '#13151C',
     purple50: '#FAF5FF',
     purple100: '#E9D8FD',
     purple200: '#D6BCFA',
